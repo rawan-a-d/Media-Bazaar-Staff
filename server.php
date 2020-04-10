@@ -22,17 +22,17 @@
 
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	// if(isset($_GET['email'])){
-	// 	$email = $_GET['email'];
-	// }
+	if(isset($_GET['email'])){
+		$email = $_GET['email'];
+	}
+	
 	// $email    = $_POST["email"];
 	// change password USER
 	if (isset($_POST['changePassword']))
 	 {
+		 
 		 try{
 
-		// echo $email;
-		// exit();	
 		//Getting the inputs thorugh post method
 		$emailToChange = $_POST["emailToChange"];	
 	    $NewPassword = $_POST["New_Password"];
@@ -57,8 +57,8 @@
 	// LOGIN USER
 	if (isset($_POST['login_user'])) 
 	{
-	$email = $_POST["email"];;
-	 $role = 'Employee';
+	 $email = $_POST["email"];
+	 $role = "Employee";
 	 $password_login = $_POST["password_login"];
 
 		if (empty($email)) {
@@ -70,31 +70,31 @@
 
 		if (count($errors) == 0) {
 		
-			$sql = "SELECT * FROM person WHERE email=:email AND password= :password_login AND role= 'Employee'";
+			$sql = "SELECT * FROM person WHERE email=:email AND password= :password_login AND role= :givenRole";
 			$stmt = $db->prepare($sql);
 			$stmt->execute(
 
 				array(
-
-					'email' => $_POST["email"],
-					'password_login' => $_POST["password_login"]
+					'givenRole' => "Employee",
+					'email' => $email,
+					'password_login' =>  $password_login	
 				)
+				
 			);
 			$count = $stmt->rowCount();
-			if($count > 0){
+			if($count > 0 ){
 				
 				echo '<script>
 				alert("Youre logged in")
 				</script>';
-			
+
 			}
 			else
 			{
 				echo '<script>
-				alert("Password is wrong")
+				alert("Password/Username is wrong")
 				</script>';
 			}
-
 		}
 	}
 
@@ -102,11 +102,6 @@
 	{
 	require 'mail\PHPMailer-master\PHPMailerAutoload.php';
 	$emailTo=$_POST["emailToUse"];
-
-	$linkToResetPassword = 'localhost/r2da-project-website\forgotPassword.php';
-	// echo $emailTo ;
-	//  exit();
-
 	$body = "<!DOCTYPE html>
 	<html lang='en'>
 	<head>
@@ -123,14 +118,22 @@
 			Please click on the link to reset your password.
 			<a href='http://localhost/r2da-project-website/changePassword.php?email=".$emailTo."'</a>
 		Reset your password
+		
 		</p>	
 		</div>
 	</body>
 	</html>";
-	$sql = "SELECT * FROM person WHERE email=:emailTo AND role= 'Employee'";
+
+	//find current working directory/rootfolder
+
+
+
+
+	$sql = "SELECT * FROM person WHERE email=:emailTo AND role= :givenRole";
 	
 	$stmt = $db->prepare($sql);
 	$stmt->bindParam(':emailTo', $emailTo);
+	$stmt->bindParam(':givenRole', "Employee");
 	$mail = new PHPMailer();
 	  
 	  //Enable SMTP debugging.
@@ -160,20 +163,18 @@
 	  $mail->FromName = "Media Bazaar";
 	  
 	  $mail->addAddress("Anaswarraich72@gmail.com");
-	  
-	  $mail->isHTML(true);
-	 
+	
 	  $mail->Subject = "test mail";
-	  $mail->Body = "<i>this is your password:</i>".$body;
-	  $mail->AltBody = "This is the plain text version of the email content";
+	  $mail->Body = $body;
+	
 	  if($mail->send())
 	  {
-		echo "Message has been sent successfully";  
-	  }
-	  else
-	  {
-	    echo "Mailer Error: " . $mail->ErrorInfo;
-	  }
+		  echo '<script>
+		alert("email sent")
+		</script>';
+	}
+		
+	 
 
 }
 ?>

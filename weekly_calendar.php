@@ -1,4 +1,5 @@
 <?php 
+	include("config/session.php");
 	include("sql/calendarFunctions.php");
 	$chosenDate = '';
 

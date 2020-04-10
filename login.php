@@ -1,45 +1,39 @@
-<?php include('server.php') ?>
+<?php 
+
+//login
+include("sql/server.php");
+
+echo $_SERVER["PHP_SELF"];
+    if (isset($_POST['login_user'])) 
+	{
+        $email = $_POST["email"];
+        $password_login = $_POST["password_login"];
+        login($email, $password_login);
+    } 
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Document</title>
+    <title>Welcome</title>
 </head>
 <body>
-    <div class="Login">
-    <main>
-      <header>
-
-      </header>
-      <div class="container">
-          <div id="loginBox">
-
-          <form method="post" action="login.php">
-                <?php include('errors.php'); ?> 
-                <ul class="Login_list">
-                <li> <h2>Member Login </h2> </li><br>
-                    <label><p>Username</p></label><br>
-                    <li> <input type="text" name="email" id = "login_input"> </li><br>
-                    <label><p>Password</p></label><br>
-                    <li><input type="password" name="password_login" id="login_input">  </li> 
-                    <br>
-                    <li> <button type="submit" class="btn" name="login_user" id="btn_log"><p>Login<p></button> </li>  <br>  
-                    <li> <a href="Email.php">Forget Password </a> </li>
-                    </ul>
-            </form>
-          </div>
-           
-      </div>
-   
-  
-    </main>
-    
+	<div class="container">
+		<h1>Login</h1>
+        <form method="post" action="login.php">
+            <label for="email">Email</label> <br> <br>
+            <input type="text" name="email" id = "login_input"> <br>
+            <label for="pass">Password</label> <br> <br>
+            <input type="password" name="password_login" id="login_input"> 
+            <input type="checkbox" name="remember_me" id="remember_me">  
+            <label for="rememberMe">Remember me</label> <br> <br>
+            <button type="submit" class="btn" name="login_user" id="btn_log"><p>Login<p></button>  <br>  <br>  
+            <label for="forgotPass"><a href="Email.php">Forget Password </a>  </label> 
+      </form>
     </div>
-    <footer>
-
-    </footer>
-
 </body>
 </html>
