@@ -1,0 +1,60 @@
+.page-wrap	{ 
+  width: 90%; 
+  margin: 0 auto 10%;
+  box-shadow: 0 10px 20px 0 #0ed4c3f1;
+}
+ h1 { 
+  margin: 25px 0; 
+  font: 28px Arial, Serif; 
+  text-transform: uppercase; 
+  letter-spacing: 3px;
+  color: #fd590d;
+  text-align: center;
+}
+h2 { 
+  margin: 25px 0; 
+  font: 24px Arial, Serif; 
+  letter-spacing: 3px;
+  color: #fd590d  ;
+  text-indent: 55px;
+  text-align: justify;
+}
+h3 { 
+  margin: 25px 0; 
+  font: 24px Arial, Serif; 
+  letter-spacing: 3px;
+  color: #fd590d  ;
+  text-indent: 55px;
+  text-align: justify;
+}
+.logo {
+  margin-right: 100%;
+  max-width: 25%;
+}
+.mediabazaar {
+  margin-right: 0px;
+  max-width: 55%;
+  float: right;
+  max-width: 50%;
+}
+* {
+  box-sizing: border-box;
+}
+
+.column1 {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.column2 {
+  float: right;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
