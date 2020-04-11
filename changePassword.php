@@ -1,6 +1,14 @@
 <?php
 
-include("sql/server.php");
+    include("sql/server.php");
+
+    $emailToChange = '';
+
+    if(isset($_GET['email'])){
+        $emailToChange = $_GET['email'];
+    }
+
+    // echo $emailToChange;
 
 // $pageName = $_SERVER["PHP_SELF"];
 // $filePath = realpath(dirname(__FILE__))."$pageName";
@@ -11,14 +19,13 @@ include("sql/server.php");
 // $path = (@$filePath == "C:\xampp\htdocs") ? "https://xampp/htdocs" : "https://xampp/htdocs";
 // $path .=$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]); 
 // echo $path ;
-if (isset($_POST['changePassword']))
-{
-   
- $emailToChange = $_POST["emailToChange"];	
-$NewPassword = $_POST["New_Password"];
-$R_New_Password = $_POST["Repeat_New_Password"];
-PasswordToChange($emailToChange, $NewPassword, $R_New_Password);
-}
+    if (isset($_POST['changePassword']))
+    {
+        $email = $_POST["emailToChange"];	
+        $NewPassword = $_POST["New_Password"];
+        $R_New_Password = $_POST["Repeat_New_Password"];
+        PasswordToChange($email, $NewPassword, $R_New_Password);
+    }
 
 ?>
 
@@ -33,9 +40,8 @@ PasswordToChange($emailToChange, $NewPassword, $R_New_Password);
 <body>
  <main id="container">
  <h1>Reset Password </h1> 
-    <form name = "validationForm" method="post" onsubmit="return Validation()" action="changePassword.php">
-        <label><p>Email</p></label>
-        <input type="text" name="emailToChange" id = "login_input"> 
+    <form name = "validationForm" action="changePassword.php" method="post" onsubmit="return Validation()">
+        <input type="hidden" name="emailToChange" value="<?php echo $emailToChange; ?>" id = "login_input"> 
         <br>
         <label><p>New Password</p></label>
         <input type="password" required placeholder="....."  name="New_Password"  id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">

@@ -1,10 +1,11 @@
 <?php 
 	include("config/dbConfig.php");
-	include("php/connection.inc.php");
-	$errors = array(); 
+	// include("php/connection.inc.php");
+	$errors = array();
+
 	function login($giveEmail, $givenPassword_login){
 		global $conn;
-		global $connec;
+		// global $connec;
 		try{
 
 			$email = $giveEmail;
@@ -161,6 +162,8 @@
 		  $mail->FromName = "Media Bazaar";
 		  
 		  $mail->addAddress("Anaswarraich72@gmail.com");
+		  //$mail->addAddress("rawan.ad7@gmail.com");
+
 		  
 		 $mail->isHTML(true);
 		 
@@ -188,23 +191,36 @@
 	}
 
 	function PasswordToChange($givenEmail, $givenNewPassword, $givenNewRepeatPassword){
+
 		global $conn;
 		try{
-		// $emailToChange = $_GET['email']
-		//echo $emailToChange;
-		$emailToChange = $givenEmail;
-	    $NewPassword = $givenNewPassword;
-		$R_New_Password = $givenNewRepeatPassword;
+		    $NewPassword = $givenNewPassword;
+			$R_New_Password = $givenNewRepeatPassword;
 
-		$password = md5($R_New_Password);//encrypt the password before saving in the database
-		$sql =  "UPDATE person SET password =:R_New_Password WHERE email = :emailToChange AND role = 'Employee'" ;
-		$stmt = $conn->prepare($sql); 
-		// $stmt->bindParam(':givenRole', "Employee");
-		$stmt->bindParam(':emailToChange', $emailToChange);
-		$stmt->bindParam(':R_New_Password', $R_New_Password);
-		
-		$stmt->execute();
-		header('location: login.php');
+			$password = md5($R_New_Password);//encrypt the password before saving in the database
+			$sql =  "UPDATE person SET password = :R_New_Password WHERE email = :emailToChange AND role = 'Employee'" ;
+
+			//UPDATE person SET password = "hoho" WHERE email = "MelvinRodgers@mediabazaar.com" AND role = 'Employee'
+			$stmt = $conn->prepare($sql); 
+			// $stmt->bindParam(':givenRole', "Employee");
+			$stmt->bindParam(':emailToChange', $givenEmail);
+			$stmt->bindParam(':R_New_Password', $R_New_Password);
+			
+			$result = $stmt->execute();
+
+			if($result){
+				echo '<script>
+				alert("Password was successfully changed");
+				</script>';
+
+				header("refresh:5; url=login.php"); 
+			}
+			else {
+				echo '<script>
+				alert("Something went wrong");
+				</script>';
+			}
+
 		}
 		catch(PDOException $e)
 		{
