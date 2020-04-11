@@ -80,6 +80,10 @@
 		// Getting the month number
 		$month = str_pad($month, 2, "0", STR_PAD_LEFT);
 
+		// Today date
+		$todayDate = new DateTime(date('Y-m-d'));
+
+
 		while ($currentDay <= $numberDays) {
 			// If seventh culomn (Sunday) was reached, start a new row
 			if($dayOfWeek == 7){
@@ -93,6 +97,9 @@
 			$dayname = strtolower(date('l', strtotime($date)));
 
 			$today = $date==date('Y-m-d')?"today":"";
+
+			// Current date as DateTime
+			$currentDate = new DateTime($date);
 
 			// Weekend
 			if($dayname == 'saturday' || $dayname =='sunday'){
@@ -117,13 +124,17 @@
 
 				// If employee has a shift
 				if($result != null){
-					// If shift status is assigned
-					if($result[1] == 'Assigned'){
+					$interval = $todayDate->diff($currentDate);
+					$interval = $interval->format('%R%a');
+
+					// If result is assigned and it's after 7 days
+					if($result[1] == 'Assigned' && $interval <= 7){
 						$calendar .= "<div class='box scheduled $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='confirm' class='btn confirm'>Confirm attendance</button><input type='hidden' name='date' value=".$date."></form>";
 					}
-					// If shift status is confirmed
-					else if($result[1] == 'Confirmed'){
-						$calendar .= "<div class='box scheduled $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$date."></form>";				
+
+					// Register as sick (Later). They can register a day before or same day. 
+					else if($result[1] == 'Confirmed' && $interval <= 1){
+						$calendar .= "<div class='box scheduled $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$date."></form>";	;
 					}
 					else {
 					// Confirm attendance
