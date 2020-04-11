@@ -65,14 +65,34 @@
             </form>
             ";
             }
+            sleep(1.5);
             ?>
             <?php include('includes/footer.php') ?>
-
-
-            
-        
-            
         </div>
+        <div id='myModal' class='modal'>
+
+
+<div class='modal-content'>
+  <p id="modal_text">Your information has been updated successfully</p>
+</div>
+
+          </div>
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("btn_form");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
         
     </body>
 </html>

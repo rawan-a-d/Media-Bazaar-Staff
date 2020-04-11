@@ -6,7 +6,7 @@
 	function login($giveEmail, $givenPassword_login){
 		global $conn;
 		
-		// global $connec;
+		
 		try{
 
 			$email = $giveEmail;
