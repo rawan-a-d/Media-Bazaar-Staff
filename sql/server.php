@@ -41,7 +41,7 @@
 				// If user has a session
 					if(isset($_SESSION['email']))
 					{
-						header('Location: monthly_calendar.php');
+						header('Location: index.php');
 						// echo '<script>
 						// alert("Youre logged in")
 						// </script>';
@@ -160,8 +160,8 @@
 			// echo '<script>
 			// alert("email sent")
 			// </script>';
-			header("Location:login.php");
 			
+			header("Location:login.php");
 		  }
 		 // header("Location:login.php");
 		//   else

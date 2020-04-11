@@ -1,4 +1,5 @@
 <?php 
+
 	include("sql/calendarFunctions.php");
 	include("config/session.php");
 	$msg = '';

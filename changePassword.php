@@ -1,16 +1,16 @@
 <?php
-include("config/session.php");
+
 include("sql/server.php");
 
-$pageName = $_SERVER["PHP_SELF"];
-$filePath = realpath(dirname(__FILE__))."$pageName";
-$rootPath = realpath($_SERVER['DOCUMENT_ROOT']);
+// $pageName = $_SERVER["PHP_SELF"];
+// $filePath = realpath(dirname(__FILE__))."$pageName";
+// $rootPath = realpath($_SERVER['DOCUMENT_ROOT']);
 
-$htmlPath = str_replace($rootPath, '', $filePath);
+// $htmlPath = str_replace($rootPath, '', $filePath);
 
-$path = (@$filePath == "C:\xampp\htdocs") ? "https://xampp/htdocs" : "https://xampp/htdocs";
-$path .=$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]); 
-echo $path ;
+// $path = (@$filePath == "C:\xampp\htdocs") ? "https://xampp/htdocs" : "https://xampp/htdocs";
+// $path .=$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]); 
+// echo $path ;
 if (isset($_POST['changePassword']))
 {
    

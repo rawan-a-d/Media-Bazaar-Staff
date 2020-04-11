@@ -1,9 +1,9 @@
 <?php 
 
+
 //login
 include("sql/server.php");
 
-echo $_SERVER["PHP_SELF"];
     if (isset($_POST['login_user'])) 
 	{
         $email = $_POST["email"];
@@ -32,7 +32,7 @@ echo $_SERVER["PHP_SELF"];
             <input type="checkbox" name="remember_me" id="remember_me">  
             <label for="rememberMe">Remember me</label> <br> <br>
             <button type="submit" class="btn" name="login_user" id="btn_log"><p>Login<p></button>  <br>  <br>  
-            <label for="forgotPass"><a href="Email.php">Forget Password </a>  </label> 
+            <a href="Email.php">Forget Password </a> 
       </form>
     </div>
 </body>
