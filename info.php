@@ -1,5 +1,5 @@
 <?php 
-    
+    include 'sql/server.php';
     include 'php/connection.inc.php';
     include 'php/func.inc.php';
 ?>
@@ -8,19 +8,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <title>Forum</title>
-        
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <title>Home page</title>
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css">
     </head>
     <body>
+        <?php include('includes/header.php') ?>
         <div class = "container">
             <?php 
-                $id = $_GET['uid'];
+                $id = $_COOKIE['uid'];
                 $sql ="SELECT * FROM person WHERE id = '$id'";
-                $result = $conn->query($sql);
+                $result = $connec->query($sql);
                 while($row = $result->fetch_assoc()){
                 echo "
-                <form action='".updateInfo($conn)."' method='POST'>
+                <form action='".updateInfo($connec)."' method='POST'>
                 <div class='postForm'>
                 <div class='left_side'>
                     <h3>First name</h3>
@@ -64,7 +66,7 @@
             ";
             }
             ?>
-
+            <?php include('includes/footer.php') ?>
 
 
             
