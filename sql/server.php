@@ -5,6 +5,7 @@
 
 	function login($giveEmail, $givenPassword_login){
 		global $conn;
+		
 		// global $connec;
 		try{
 
@@ -21,11 +22,7 @@
 					)
 					
 				);
-				$sql2 ="SELECT * FROM person WHERE email = '$email'";
-                $result = $connec->query($sql2);
-                while($row = $result->fetch_assoc()){
-					$id = $row['id'];
-				}
+				
 				
 
 				$result = $stmt->fetch();
@@ -53,7 +50,7 @@
 					// If user has a session
 					if(isset($_SESSION['email']))
 					{
-						setcookie('uid', $id, time() + (86400 * 30));
+						setcookie('uid', $result[0], time() + (86400 * 30));
 						header('Location: index.php');
 						// echo '<script>
 						// alert("Youre logged in")
