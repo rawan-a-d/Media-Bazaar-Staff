@@ -185,10 +185,12 @@
 		$R_New_Password = $givenNewRepeatPassword;
 
 		$password = md5($R_New_Password);//encrypt the password before saving in the database
-		$sql =  "UPDATE person SET password =:R_New_Password WHERE email = :emailToChange" ;
+		$sql =  "UPDATE person SET password =:R_New_Password WHERE email = :emailToChange AND role = 'Employee'" ;
 		$stmt = $conn->prepare($sql); 
+		// $stmt->bindParam(':givenRole', "Employee");
 		$stmt->bindParam(':emailToChange', $emailToChange);
 		$stmt->bindParam(':R_New_Password', $R_New_Password);
+		
 		$stmt->execute();
 		header('location: login.php');
 		}
