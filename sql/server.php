@@ -11,7 +11,6 @@
 				$sql = "SELECT * FROM person WHERE email=:email AND password= :password_login AND role= :givenRole";
 				$stmt = $conn->prepare($sql);
 				$stmt->execute(
-	
 					array(
 						'givenRole' => "Employee",
 						'email' => $email,
@@ -19,13 +18,16 @@
 					)
 					
 				);
-				//$result = $stmt->fetch();
+				$result = $stmt->fetch();
 				$count = $stmt->rowCount();
 				if($count > 0 ){
 					session_start();
 
 					// Save email
 					$_SESSION["email"] = $email;
+
+					// Save id
+					$_SESSION["employeeId"] = $result[0];
 
 					// Used in remember me
 					$_SESSION['loggedin_time'] = time();
@@ -38,7 +40,7 @@
 					}
 				
 
-				// If user has a session
+					// If user has a session
 					if(isset($_SESSION['email']))
 					{
 						header('Location: monthly_calendar.php');

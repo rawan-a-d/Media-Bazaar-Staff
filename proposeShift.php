@@ -1,9 +1,12 @@
 <?php 
 	include("sql/calendarFunctions.php");
 	include("config/session.php");
+
 	$msg = '';
 	$date = '';
 	$shiftType = '';
+		$employeeId = '';
+
 
 	if(isset($_GET['date'])){
 		$date = $_GET['date'];
@@ -11,7 +14,7 @@
 
 	if(isset($_POST['submit'])){
 		// Current employee is
-		$employeeId = 17;
+		$employeeId = $_SESSION['employeeId'];
 		$shiftType = $_POST['shiftType'];
 
 		// Check if shift is full
@@ -43,6 +46,7 @@
 		<link rel="stylesheet" type="text/css" href="css/proposeShift.css">
 	</head>
 	<body>
+				<h1><?php echo $employeeId; ?></h1>
 		<main id="container">
 			<h1>I'm available on: <?php echo $date; ?></h1><hr>
 			<form action="" method="POST" autocomplete="off">

@@ -1,11 +1,15 @@
 <?php
+	/* Check session */
 	include("config/session.php");
+	/* Session expiry */
+	include('config/session_expiry.php');
+
 	include("sql/calendarFunctions.php");
 
 	/* Cancel, call in sick */
 	if(isset($_POST['cancelShift'])){
 		$date = $_POST['date'];
-		$employeeId = 17;
+		$employeeId = $_SESSION['employeeId'];
 
 		cancelShift($date, $employeeId);
 	}
@@ -13,14 +17,14 @@
 	/* Confirm attendance */
 	if(isset($_POST['confirm'])){
 		$date = $_POST['date'];
-		$employeeId = 17;
+		$employeeId = $_SESSION['employeeId'];
 
 		confirmAttendance($date, $employeeId);
 	}
 
 	// Monthly calendar
 	function build_calendar($month, $year){
-		$employeeId = 17;
+		$employeeId = $_SESSION['employeeId'];
 		getShifts($employeeId);
 
 		// Array containing names of all days in a week
@@ -119,7 +123,7 @@
 				}
 			}
 			else {
-				$employeeId = 17;
+				$employeeId = $_SESSION['employeeId'];
 				// Check employee's agenda
 				$result = DoIHaveWork($date, $employeeId);
 
@@ -194,6 +198,7 @@
 		<link rel="stylesheet" type="text/css" href="css/calendar.css">
 	</head>
 	<body>
+		<h1><?php echo $_SESSION['employeeId']; ?></h1>
 		<main id="main">
 			<div id="calendar">
 				<?php 
