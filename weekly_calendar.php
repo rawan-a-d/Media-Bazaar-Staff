@@ -159,9 +159,10 @@
 		<title>Weekly Calendar</title>		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/calendar.css">
-	</head>
-	<body>
-		<h1><?php echo $_SESSION['employeeId']; ?></h1>
+
+		<!-- Include header (links to css files and navbar) -->
+		<?php include('includes/header.php') ?>
+
 		<h1><?php echo $chosenDate; ?></h1>
 		<main id="main">
 			<div id="calendar">
@@ -178,7 +179,11 @@
 					generateCalendar($dt, $week, $year);
 				?>
 			</div>		
-		</main>				 
+		</main>
+
+		<!-- Include footer -->
+		<?php include('includes/footer.php') ?>
+
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.js"
 			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="

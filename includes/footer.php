@@ -10,4 +10,3 @@
 		</div>
 		<script type="text/javascript" src="js/navbar.js"></script>
 	</footer>
-</body>
