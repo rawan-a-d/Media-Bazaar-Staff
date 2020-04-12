@@ -1,8 +1,8 @@
 <!-- Common css links(navbar, footer) -->
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
-</head>
-<body>
+	</head>
+	<body>
 	<!-- Navbar -->
 	<nav>
 		<ul>

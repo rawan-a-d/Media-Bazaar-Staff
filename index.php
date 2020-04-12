@@ -6,21 +6,12 @@
         <link rel="stylesheet" type="text/css" href="css/navbar.css">
     </head>
     <!-- Include header (links to css files and navbar) -->
-    <?php include('includes/header.php') ?>
+    <head>
+    <?php include('includes/header.php')?>
     <p></p>
-    <body>
-    <div class="background">
-    </div>
     
     
     <div class = "text">
-        <div class = "row">
-            <div class="column1">
-            </div>
-            <div class="column2">
-             <img class = "mediabazaar" src="img/mediabazaar.png" alt="MediaBazaar">
-            </div>  
-        </div>
          <h1>Welcome to Media Bazaar!</h1>
          <p><br></p>
         <div class="page-wrap">
@@ -34,7 +25,6 @@
             </h3>  
         </div>
     </div>
-</body>
     <!-- Include footer -->
 	<?php include('includes/footer.php') ?>
 </html>

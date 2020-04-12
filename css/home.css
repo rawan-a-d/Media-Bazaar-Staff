@@ -1,13 +1,5 @@
 
 
-body {
-  background-image: url(https://wallpaperaccess.com/full/85850.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  
-}
-
 body .background{
   filter: blur(8px);
 }
@@ -21,7 +13,7 @@ body .background{
   font: 70px Arial, Serif; 
   text-transform: uppercase; 
   letter-spacing: 3px;
-  color: rgb(245, 235, 235);
+  color: rgb(236, 76, 2);
   text-align: center;
   text-shadow: 2px 2px #4d302f;
   font-weight: bold;
@@ -33,7 +25,7 @@ h2 {
   text-indent: 55px;
   text-align: justify;
   text-shadow: 0.5px 0.5px #030303;
-  color: rgb(255, 255, 255);
+  color: rgb(236, 76, 2);
   
 }
 h3 { 
@@ -41,7 +33,7 @@ h3 {
   font: 30px Arial, Serif; 
   letter-spacing: 3px;
   text-indent: 55px;
-  color: rgb(255, 255, 255);
+  color: rgb(236, 76, 2);
   text-align: justify;
   text-shadow: 1px 1px #080505;
 }
