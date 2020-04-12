@@ -22,9 +22,6 @@
 					)
 					
 				);
-				
-				
-
 				$result = $stmt->fetch();
 				$count = $stmt->rowCount();
 				if($count > 0 ){
@@ -164,7 +161,7 @@
 		  
 		 $mail->isHTML(true);
 		 
-		  $mail->Subject = "test mail";
+		  $mail->Subject = "Password Reset";
 		  $mail->Body = $body;
 		//   $mail->AltBody = "This is the plain text version of the email content";
 		  if($mail->send())

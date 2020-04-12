@@ -1,4 +1,8 @@
 <?php 
+    /* Check session */
+    include("config/session.php");
+    /* Session expiry */
+    include('config/session_expiry.php');
     include 'sql/server.php';
     include 'php/connection.inc.php';
     include 'php/func.inc.php';
