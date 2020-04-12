@@ -1,42 +1,64 @@
-									/* Body */
-body {
-	margin: 0;
-	font: 400 0.813em Arial;
-	background: whitesmoke;
-}
-
-
-
-														/* Navbar */
-ul {
-	list-style-type: none;
+body  {
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
-	background-color: #0ed4c3f1;
-}
-
-li {
- 	float: left;
-}
-
-li a {
-	display: block;
-	color: white;
+  }
+  
+  .logo1 {
+	  max-width: 5.8%;
+	  float: left;
+  }
+  /* ~~ Top Navigation Bar ~~ */
+  
+  #navigation-container {
+	width: 1200px;
+	margin: 0 auto;
+	height: 70px;
+	float: left;
+  }
+  
+  .navigation-bar {
+	background-color: #013c4d;
+	height: 70px;
+	width: 100%;
+  }
+  
+  .navigation-bar ul {
+	padding: 0px;
+	margin: 0px;
 	text-align: center;
-	padding: 14px 16px;
+	float: left;
+	background: #013c4d;
+  }
+  
+  .navigation-bar li {
+	list-style-type: none;
+	padding: 0px;
+	display: inline;
+  }
+  
+  .navigation-bar li a {
+	color: white;
+	font-size: 20px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	text-decoration: none;
-}
-
-li a:hover:not(.active) {
+	line-height: 70px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	opacity: 0.7;
+  }
+  .navigation-bar li a:hover:not(.active) {
 	background-color: #fd590d;
 }
 
 .active {
 	background-color: #fd590d	;
 }
-
-/* Logout button */
-li#logout {
+  #menu {
+	float: right;
+  }
+  /* Logout button */
+.navigation-bar li#logout {
 	float: right;
 }
