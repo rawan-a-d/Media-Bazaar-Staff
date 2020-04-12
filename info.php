@@ -32,10 +32,10 @@
                     <input type='text' class='form_input' name='lastName' value='".$row['lastName']."' readonly>
                     <br>
                     <h3>Email</h3>
-                    <input type='text' class='form_input' name='email' value='".$row['email']."'>
+                    <input type='text' class='form_input' name='email' value='".$row['email']."' readonly>
                     <br>
                     <h3>Date of Birth</h3>
-                    <input type='text' class='form_input' name='dob' value='".$row['dateOfBirth']."'>
+                    <input type='text' class='form_input' name='dob' value='".$row['dateOfBirth']."' readonly>
                     <br>
                     <input type='hidden' name='uid' value='".$id."'>
                     <h3>Password</h3>
@@ -57,6 +57,7 @@
                     <br>
                     
                 </div>
+                
                 <div id='btnBlock'>
                     <center><button type='submit' name='infoSubmit' id = 'btn_form'>Modify</button></center>
                 </div>
@@ -69,6 +70,7 @@
             ?>
             <?php include('includes/footer.php') ?>
         </div>
+        <br>
         <div id='myModal' class='modal'>
 
 
