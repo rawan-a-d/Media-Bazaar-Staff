@@ -111,12 +111,10 @@
 					if($result[1] == 'Assigned' && $interval <= 7){
 						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='confirm' class='btn confirm'>Confirm attendance</button><input type='hidden' name='date' value=".$daydate."></form>";
 					}
-
 					// Register as sick. They can register a day before or same day. 
 					else if($result[1] == 'Confirmed' && $interval <= 1){
 						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$daydate."></form>";		
 					}
-
 					else {
 					// Confirm attendance
 					$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p>";

@@ -6,14 +6,16 @@ html, body {
 }
 
 
-html { height:100%; }
+html { 
+	height:100%; 
+}
 body { 
 	position:absolute;
-	 top:0;
-	  bottom:0;
-	   right:0;
-	    left:0; 
-	}
+	top:0;
+	bottom:0;
+	right:0;
+	left:0; 
+}
 
 
 main#container {
@@ -85,13 +87,6 @@ form {
 	height: 40%;
 	margin-top: 4%;
 }
-
-
-
-
-/*body{
-  background:#f0f0f0;
-}*/
 
 .button{  
   float:left;

@@ -313,5 +313,4 @@
 		$result = $statement->fetch();
 	}
 
-
  ?>
