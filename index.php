@@ -1,11 +1,10 @@
-<?php 
-    /* Check session */
-    include("config/session.php");
-    /* Session expiry */
-    include('config/session_expiry.php');
+<?php
+	/* Check session */
+	include("config/session.php");
+	/* Session expiry */
+	include('config/session_expiry.php');
 
-    include("sql/calendarFunctions.php");
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
