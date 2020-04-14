@@ -14,6 +14,14 @@
 		cancelShift($date, $employeeId);
 	}
 
+	/* Cancel proposed shift */
+	if(isset($_POST['cancelProposedShift'])){
+		$date = $_POST['date'];
+		$employeeId = $_SESSION['employeeId'];
+
+		cancelProposedShift($date, $employeeId);
+	}	
+
 	/* Confirm attendance */
 	if(isset($_POST['confirm'])){
 		$date = $_POST['date'];
@@ -140,6 +148,10 @@
 					// Register as sick (Later). They can register a day before or same day. 
 					else if($result[1] == 'Confirmed' && $interval <= 1){
 						$calendar .= "<div class='box scheduled $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$date."></form>";	;
+					}
+					// Cancel proposed shift 
+					else if($result[1] == 'Proposed'){
+						$calendar .= "<div class='box scheduled $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelProposedShift' class='btn cancel'>Cancel proposal</button><input type='hidden' name='date' value=".$date."></form>";	;
 					}
 					else {
 					// Confirm attendance
