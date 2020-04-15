@@ -115,13 +115,15 @@
 				Hello there,
 				
 				Please click on the link to reset your password.
-				<a href='".$link."?email=".$emailTo."'</a>
+				<a href='http://i439426.hera.fhict.nl/changePassword.php'> </a>
+				
 			Reset your password
 			
 			</p>	
 			</div>
 		</body>
 		</html>";
+		// <a href='".$link."?email=".$emailTo."'</a>
 		$sql = "SELECT * FROM person WHERE email=:emailTo AND role= 'Employee'";
 		
 		$stmt = $conn->prepare($sql);
@@ -135,13 +137,13 @@
 		  $mail->isSMTP();
 		  //Set SMTP host name
 		  $mail->Host = "smtp.gmail.com";
-		//   $mail->SMTPOptions = array(
-		// 					'ssl' => array(
-		// 						'verify_peer' => false,
-		// 						'verify_peer_name' => false,
-		// 						'allow_self_signed' => true
-		// 					)
-		// 				);
+		  $mail->SMTPOptions = array(
+							'ssl' => array(
+								'verify_peer' => false,
+								'verify_peer_name' => false,
+								'allow_self_signed' => true
+							)
+						);
 		  //Set this to true if SMTP host requires authentication to send email
 		  $mail->SMTPAuth = TRUE;
 		  //Provide username and password
@@ -163,7 +165,7 @@
 		 
 		  $mail->Subject = "Password Reset";
 		  $mail->Body = $body;
-		//   $mail->AltBody = "This is the plain text version of the email content";
+		$mail->AltBody = "This is the plain text version of the email content";
 		  if($mail->send())
 		  {
 			// echo '<script>

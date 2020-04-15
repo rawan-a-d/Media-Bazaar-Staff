@@ -1,35 +1,5 @@
-.container{
-    width: 900px;
-    
-    margin-left: auto;
-    margin-right: auto;
-}
-.postForm {
-    margin-top: 70px;
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 100px;
-    float: left;
-}
-.left_side {
-    width: 48%;
-    padding-left: 15px;
-    float: left;
-    height:auto;
-}
-.right_side {
-    width: 48%;
-    padding-left: 15px;
-    float: right;
-}
-.form_input{
-    padding: 6px 10px;
-    box-sizing: border-box;
-    width: 250px;
-}
+
+
 .form_input:focus{
     box-shadow: 0 0 5px #43D1AF;
 	border: 1px solid #43D1AF;
@@ -76,4 +46,265 @@
 }
 #modal_text{
     font-size: 20px;
+}
+.h3info {
+    margin: 0;
+    color: black;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-align: left;
+    text-indent: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 500px;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .postForm {
+        margin-top: 70px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        float: left;
+    }
+    .left_side {
+        width: 100%;
+        padding-left: 15px;
+        float: left;
+        height:auto;
+        text-align: center;
+    }
+    .right_side {
+        width: 100%;
+        padding-left: 15px;
+        float: none;
+        text-align: center;
+    }
+    .h3info {
+        margin: 0;
+        color: black;
+        margin-bottom: 25px;
+        margin-top: 25px;
+        text-align: center;
+        text-indent: 0;
+    }
+    .form_input{
+        padding: 6px 10px;
+        box-sizing: border-box;
+        width: 300px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width : 767px) {
+    .container{
+        width: 600px;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .postForm {
+        margin-top: 70px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        float: left;
+    }
+    .left_side {
+        width: 100%;
+        padding-left: 15px;
+        float: left;
+        height:auto;
+        text-align: center;
+    }
+    .right_side {
+        width: 100%;
+        padding-left: 15px;
+        float: none;
+        text-align: center;
+    }
+    .h3info {
+        margin: 0;
+        color: black;
+        margin-bottom: 25px;
+        margin-top: 25px;
+        text-align: center;
+        text-indent: 0;
+    }
+    .form_input{
+        padding: 6px 10px;
+        box-sizing: border-box;
+        width: 300px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width : 992px) {
+    .container{
+        width: 700px;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .postForm {
+        margin-top: 70px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        float: left;
+    }
+    .left_side {
+        width: 100%;
+        padding-left: 15px;
+        float: left;
+        height:auto;
+        text-align: center;
+    }
+    .right_side {
+        width: 100%;
+        padding-left: 15px;
+        float: none;
+        text-align: center;
+    }
+    .h3info {
+        margin: 0;
+        color: black;
+        margin-bottom: 25px;
+        margin-top: 25px;
+        text-align: center;
+        text-indent: 0;
+    }
+    .form_input{
+        padding: 6px 10px;
+        box-sizing: border-box;
+        width: 300px;
+    }
+
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width : 1356px) {							/* Container around boxes */
+    .container{
+        width: 800px;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .postForm {
+        margin-top: 70px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        float: left;
+    }
+    .left_side {
+        width: 48%;
+        padding-left: 15px;
+        float: left;
+        height:auto;
+    }
+    .right_side {
+        width: 48%;
+        padding-left: 15px;
+        float: right;
+    }
+    .form_input{
+        padding: 6px 10px;
+        box-sizing: border-box;
+        width: 250px;
+    }
+} 
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1237px) and (max-width : 1356px){
+    .container{
+        width: 850px;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .postForm {
+        margin-top: 70px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        float: left;
+    }
+    .left_side {
+        width: 48%;
+        padding-left: 15px;
+        float: left;
+        height:auto;
+    }
+    .right_side {
+        width: 48%;
+        padding-left: 15px;
+        float: right;
+    }
+    .form_input{
+        padding: 6px 10px;
+        box-sizing: border-box;
+        width: 250px;
+    }
+}
+
+
+
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1357px) {
+    .container{
+        width: 900px;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .postForm {
+        margin-top: 70px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        float: left;
+    }
+    .left_side {
+        width: 48%;
+        padding-left: 15px;
+        float: left;
+        height:auto;
+    }
+    .right_side {
+        width: 48%;
+        padding-left: 15px;
+        float: right;
+    }
+    .form_input{
+        padding: 6px 10px;
+        box-sizing: border-box;
+        width: 250px;
+    }
 }
