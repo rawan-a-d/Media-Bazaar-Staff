@@ -1,5 +1,5 @@
 <?php 
-include("config/session.php");
+
 include("sql/server.php");
 
 if (isset($_POST['SendMail'])) 

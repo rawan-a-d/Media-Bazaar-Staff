@@ -106,18 +106,18 @@ form {
 
 
 .notify{  
-  position:absolute;
-  top:0px;
-  width:100%;
-  height:0;  
-  box-sizing:border-box;
-  color:white;  
-  text-align:center;
-  background:rgba(0,0,0,.6);
-  overflow:hidden;
-  box-sizing:border-box;
-  transition:height .2s;
-  font-size: 1.5em;
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:0;  
+	box-sizing:border-box;
+	color:white;  
+	text-align:center;
+	background:rgba(0,0,0,.6);
+	overflow:hidden;
+	box-sizing:border-box;
+	transition:height .2s;
+	font-size: 1.5em;
 }
 
 #notifyType:before{
@@ -127,17 +127,17 @@ form {
 }
 
 .active{  
-  height:50px;
+	height:50px;
 }
 
 .success:before{
-  Content:"Shift Was Successfully proposed!";
+	Content:"Shift Was Successfully proposed!";
 }
 
 .failure:before{
-  Content:"You already have a shift on that day";
+	Content:"You already have a shift on that day";
 }
 
 .full:before{
-  Content:"Selected shift is full";
+	Content:"Selected shift is full";
 }
