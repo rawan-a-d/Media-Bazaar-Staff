@@ -1,7 +1,11 @@
+body {
+  background-color: whitesmoke;
+}
 
+@media (min-width:992px){
 
-body .background{
-  filter: blur(8px);
+.text {
+  padding-bottom: 4px;
 }
 
 .page-wrap	{ 
@@ -20,22 +24,20 @@ body .background{
 }
 h2 { 
   margin: 25px 0; 
-  font: 30px Arial, Serif; 
+  font: 28px Arial, Serif; 
   letter-spacing: 3px;
-  text-indent: 55px;
   text-align: justify;
-  text-shadow: 0.5px 0.5px #030303;
-  color: rgb(236, 76, 2);
+  text-shadow: 1px 1px #030303;
+  color: #fd590d;
   
 }
 h3 { 
   margin: 25px 0; 
-  font: 30px Arial, Serif; 
+  font: 28px Arial, Serif; 
   letter-spacing: 3px;
-  text-indent: 55px;
-  color: rgb(236, 76, 2);
   text-align: justify;
-  text-shadow: 1px 1px #080505;
+  text-shadow: 1px 1px #030303;
+  color: #fd590d;
 }
 .mediabazaar {
   margin-right: 0px;
@@ -63,4 +65,129 @@ h3 {
   content: "";
   clear: both;
   display: table;
+}
+}
+@media only screen and (max-width:600px){
+
+  .page-wrap	{ 
+    width: 90%; 
+    margin: 0 auto 10%;
+    padding-bottom: 60px;
+  }
+   h1 { 
+    margin: 25px 0; 
+    font: 45px Arial, Serif; 
+    text-transform: uppercase; 
+    letter-spacing: 3px;
+    color: rgb(236, 76, 2);
+    text-align: center;
+    text-shadow: 2px 2px #4d302f;
+    font-weight: bold;
+  }
+  h2 { 
+    margin: 25px 0; 
+    font: 17px Arial, Serif; 
+    letter-spacing: 3px;
+    text-align: justify;
+    text-shadow: 0.5px 0.5px #030303;
+    color: #fd590d;
+    
+  }
+  h3 { 
+    margin: 25px 0; 
+    font: 17px Arial, Serif; 
+    letter-spacing: 3px;
+    text-align: justify;
+    text-shadow: 0.5px 0.5px #030303;
+    color: #fd590d;
+  }
+  .mediabazaar {
+    margin-right: 0px;
+    max-width: 55%;
+    float: right;
+    max-width: 50%;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  .column1 {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  .column2 {
+    float: right;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 600px) and (max-width : 992px) {
+  .page-wrap	{ 
+    width: 90%; 
+    margin: 0 auto 10%;
+    padding-bottom: 60px;
+  }
+   h1 { 
+    margin: 25px 0; 
+    font: 45px Arial, Serif; 
+    text-transform: uppercase; 
+    letter-spacing: 3px;
+    color: rgb(236, 76, 2);
+    text-align: center;
+    text-shadow: 2px 2px #4d302f;
+    font-weight: bold;
+  }
+  h2 { 
+    margin: 25px 0; 
+    font: 19px Arial, Serif; 
+    letter-spacing: 3px;
+    text-align: justify;
+    text-shadow: 1px 1px #030303;
+    color: #fd590d;
+    
+  }
+  h3 { 
+    margin: 25px 0; 
+    font: 19px Arial, Serif; 
+    letter-spacing: 3px;
+    text-align: justify;
+    text-shadow: 1px 1px #030303;
+    color: #fd590d;
+  }
+  .mediabazaar {
+    margin-right: 0px;
+    max-width: 55%;
+    float: right;
+    max-width: 50%;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  .column1 {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  .column2 {
+    float: right;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 }

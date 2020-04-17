@@ -1,14 +1,16 @@
+@media only screen and (min-width: 991px) {
 /* Footer */
 footer {
 	position: fixed;
-	left: 0;
-	bottom: 0;
+	left: 0px;
+	bottom: 0px;
 	width: 100%;
 	background-color: #013c4d;
 	color: white;
-	height: 6%;
+	height: 8%;
 	display: inline-block;
 	vertical-align: middle;
+	padding-top: 2px;
 }
 
 /* Footer */
@@ -19,39 +21,30 @@ footer >#creators {
 	margin-left: 3%;
 }
 
-#creators > p {
-	font-size: 1.2em;
-}
-
-footer > #copyright {
-	display: inline-block;
-	font: Arial, Serif;
-	width: 100%;
-	min-height:100%;
-	text-align: right;
-	margin-right: 1%;
-}
-
-#creators > p {
-font-size: 1.2em;
-}
-
 footer > #copyright {
 display: inline-block;
 font: Arial, Serif;
 width: 100%;
-min-height:100%;
+/*min-height:100%;*/
 text-align: right;
 margin-right: 1%;
 }
-
+}
 
 			/* Media queries */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 /*Footer */
 footer {
-padding-bottom: 6%;
+	position: fixed;
+	bottom:0px;
+	width: 100%;
+	background-color: #013c4d;
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+padding-top: 2px;
+padding-bottom:2px;
 font-size: 0.9em;
 }
 
@@ -73,7 +66,14 @@ margin-left: 3%;
 @media only screen and (min-width: 600px) and (max-width : 767px) {
 	/*Footer */
 	footer {
-		padding-bottom: 9%;
+		position: fixed;
+		bottom:0px;
+	width: 100%;
+	background-color: #013c4d;
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+		padding-bottom: 9px;
 	}
 	footer >#creators {
 		width: 90%;
@@ -92,7 +92,14 @@ margin-left: 3%;
 @media only screen and (min-width: 768px) and (max-width : 992px) {
 	/*Footer */
 	footer {
-		padding-bottom: 6%;
+		position: fixed;
+		bottom:0px;
+	width: 100%;
+	background-color: #013c4d;
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+		padding-bottom: 6px;
 	}
 	footer >#creators {
 		width: 80%;

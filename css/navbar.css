@@ -4,13 +4,19 @@ body  {
   }
   
   .logo1 {
-	  max-width: 5.8%;
+	  max-width: 70px;
 	  float: left;
   }
   /* ~~ Top Navigation Bar ~~ */
-  
+  @media (min-width:600px){
+	.mobile-container{
+		display:none;
+	}
+	.icon  {
+		display:none;
+	}
   #navigation-container {
-	width: 1200px;
+	width: 100%;
 	margin: 0 auto;
 	height: 70px;
 	float: left;
@@ -42,10 +48,10 @@ body  {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	text-decoration: none;
 	line-height: 70px;
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-top: 13px;
+	padding-bottom: 13px;
 	opacity: 0.7;
   }
   .navigation-bar li a:hover:not(.active) {
@@ -61,4 +67,66 @@ body  {
   /* Logout button */
 .navigation-bar li#logout {
 	float: right;
+}
+  }
+@media only screen and (max-width:600px){
+	#navigation-container{
+		display:none;
+	}
+	.logo2 {
+		max-width: 49px;
+		float: left;
+	}
+
+ /* Style the navigation menu */
+
+ .mobile-container{
+	 height: 49px;
+	 background-color: #013c4d;
+ }
+ .topnav {
+	overflow: hidden;
+	background-color: #013c4d;
+	position: relative;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+   #myLinks {
+	display: none;
+	padding-top: 49px;
+  }
+  
+  /* Style navigation menu links */
+  .mobile-container a {
+	color: white;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	display: block;
+  }
+  
+  /* Style the hamburger menu */
+  .mobile-container a.icon {
+	background: black;
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .mobile-container a:hover {
+	background-color: #fd590d;
+	color: black;
+
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+	background-color: #013c4d;
+	color: white;
+  } 
+  .icon {
+	  display:block;
+  }
 }
