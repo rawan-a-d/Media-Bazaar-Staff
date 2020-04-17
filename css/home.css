@@ -1,35 +1,41 @@
+
+
+body .background{
+  filter: blur(8px);
+}
+
 .page-wrap	{ 
   width: 90%; 
   margin: 0 auto 10%;
-  box-shadow: 0 10px 20px 0 #0ed4c3f1;
 }
  h1 { 
   margin: 25px 0; 
-  font: 28px Arial, Serif; 
+  font: 70px Arial, Serif; 
   text-transform: uppercase; 
   letter-spacing: 3px;
-  color: #fd590d;
+  color: rgb(236, 76, 2);
   text-align: center;
+  text-shadow: 2px 2px #4d302f;
+  font-weight: bold;
 }
 h2 { 
   margin: 25px 0; 
-  font: 24px Arial, Serif; 
+  font: 30px Arial, Serif; 
   letter-spacing: 3px;
-  color: #fd590d  ;
   text-indent: 55px;
   text-align: justify;
+  text-shadow: 0.5px 0.5px #030303;
+  color: rgb(236, 76, 2);
+  
 }
 h3 { 
   margin: 25px 0; 
-  font: 24px Arial, Serif; 
+  font: 30px Arial, Serif; 
   letter-spacing: 3px;
-  color: #fd590d  ;
   text-indent: 55px;
+  color: rgb(236, 76, 2);
   text-align: justify;
-}
-.logo {
-  margin-right: 100%;
-  max-width: 25%;
+  text-shadow: 1px 1px #080505;
 }
 .mediabazaar {
   margin-right: 0px;

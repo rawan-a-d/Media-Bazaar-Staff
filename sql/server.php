@@ -1,8 +1,12 @@
 <?php 
 	include("config/dbConfig.php");
-	$errors = array(); 
+	// include("php/connection.inc.php");
+	$errors = array();
+
 	function login($giveEmail, $givenPassword_login){
 		global $conn;
+		
+		
 		try{
 
 			$email = $giveEmail;
@@ -11,7 +15,6 @@
 				$sql = "SELECT * FROM person WHERE email=:email AND password= :password_login AND role= :givenRole";
 				$stmt = $conn->prepare($sql);
 				$stmt->execute(
-	
 					array(
 						'givenRole' => "Employee",
 						'email' => $email,
@@ -19,13 +22,16 @@
 					)
 					
 				);
-				//$result = $stmt->fetch();
+				$result = $stmt->fetch();
 				$count = $stmt->rowCount();
 				if($count > 0 ){
 					session_start();
 
 					// Save email
 					$_SESSION["email"] = $email;
+
+					// Save id
+					$_SESSION["employeeId"] = $result[0];
 
 					// Used in remember me
 					$_SESSION['loggedin_time'] = time();
@@ -38,10 +44,11 @@
 					}
 				
 
-				// If user has a session
+					// If user has a session
 					if(isset($_SESSION['email']))
 					{
-						header('Location: monthly_calendar.php');
+						setcookie('uid', $result[0], time() + (86400 * 30));
+						header('Location: index.php');
 						// echo '<script>
 						// alert("Youre logged in")
 						// </script>';
@@ -149,10 +156,12 @@
 		  $mail->FromName = "Media Bazaar";
 		  
 		  $mail->addAddress("Anaswarraich72@gmail.com");
+		  //$mail->addAddress("rawan.ad7@gmail.com");
+
 		  
 		 $mail->isHTML(true);
 		 
-		  $mail->Subject = "test mail";
+		  $mail->Subject = "Password Reset";
 		  $mail->Body = $body;
 		//   $mail->AltBody = "This is the plain text version of the email content";
 		  if($mail->send())
@@ -160,8 +169,8 @@
 			// echo '<script>
 			// alert("email sent")
 			// </script>';
-			header("Location:login.php");
 			
+			header("Location:login.php");
 		  }
 		 // header("Location:login.php");
 		//   else
@@ -176,23 +185,36 @@
 	}
 
 	function PasswordToChange($givenEmail, $givenNewPassword, $givenNewRepeatPassword){
+
 		global $conn;
 		try{
-		// $emailToChange = $_GET['email']
-		//echo $emailToChange;
-		$emailToChange = $givenEmail;
-	    $NewPassword = $givenNewPassword;
-		$R_New_Password = $givenNewRepeatPassword;
+		    $NewPassword = $givenNewPassword;
+			$R_New_Password = $givenNewRepeatPassword;
 
-		$password = md5($R_New_Password);//encrypt the password before saving in the database
-		$sql =  "UPDATE person SET password =:R_New_Password WHERE email = :emailToChange AND role = 'Employee'" ;
-		$stmt = $conn->prepare($sql); 
-		// $stmt->bindParam(':givenRole', "Employee");
-		$stmt->bindParam(':emailToChange', $emailToChange);
-		$stmt->bindParam(':R_New_Password', $R_New_Password);
-		
-		$stmt->execute();
-		header('location: login.php');
+			$password = md5($R_New_Password);//encrypt the password before saving in the database
+			$sql =  "UPDATE person SET password = :R_New_Password WHERE email = :emailToChange AND role = 'Employee'" ;
+
+			//UPDATE person SET password = "hoho" WHERE email = "MelvinRodgers@mediabazaar.com" AND role = 'Employee'
+			$stmt = $conn->prepare($sql); 
+			// $stmt->bindParam(':givenRole', "Employee");
+			$stmt->bindParam(':emailToChange', $givenEmail);
+			$stmt->bindParam(':R_New_Password', $R_New_Password);
+			
+			$result = $stmt->execute();
+
+			if($result){
+				echo '<script>
+				alert("Password was successfully changed");
+				</script>';
+
+				header("refresh:5; url=login.php"); 
+			}
+			else {
+				echo '<script>
+				alert("Something went wrong");
+				</script>';
+			}
+
 		}
 		catch(PDOException $e)
 		{
