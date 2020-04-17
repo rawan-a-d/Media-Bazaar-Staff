@@ -1,6 +1,6 @@
 <?php 
 
-function updateInfo($connec) {
+function updateInfo($conn) {
     if(isset($_POST['infoSubmit'])){
         $fName = $_POST['firstName'];
         $lName = $_POST['lastName'];
@@ -17,7 +17,7 @@ function updateInfo($connec) {
         SET firstName = '$fName', lastName = '$lName', email  = '$email',  dateOfBirth = '$dob' ,streetName = '$streetName', houseNr = '$houseN', city = '$city', zipcode = '$zipcode', password = '$pass'
         WHERE id = '$uid'";
         
-        $result = $connec->query($sql);
+        $result = $conn->query($sql);
     }
     
 }

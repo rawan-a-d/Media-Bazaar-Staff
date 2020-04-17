@@ -1,11 +1,6 @@
 <?php 
-
 	include("sql/calendarFunctions.php");
-	/* Session expiry */
-	include('config/session_expiry.php');
-
 	include("config/session.php");
-
 	$msg = '';
 	$date = '';
 	$shiftType = '';
@@ -16,7 +11,7 @@
 
 	if(isset($_POST['submit'])){
 		// Current employee is
-		$employeeId = $_SESSION['employeeId'];
+		$employeeId = 17;
 		$shiftType = $_POST['shiftType'];
 
 		// Check if shift is full
@@ -46,10 +41,8 @@
 		<title>Propose shift</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/proposeShift.css">
-		
-		<!-- Include header (links to css files and navbar) -->
-		<?php include('includes/header.php') ?>
-
+	</head>
+	<body>
 		<main id="container">
 			<h1>I'm available on: <?php echo $date; ?></h1><hr>
 			<form action="" method="POST" autocomplete="off">
@@ -68,9 +61,6 @@
 
 		<!-- Msg -->
 		<input type="hidden" name="message" id="message" value="<?php echo $msg; ?>">
-
-		<!-- Include footer -->
-		<?php include('includes/footer.php') ?>
 
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script type="text/javascript" src="js/proposeShift.js"></script>

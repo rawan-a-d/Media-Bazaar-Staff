@@ -12,7 +12,6 @@
 			unset($_SESSION['userId']);
 			unset($_SESSION['username']);
 			unset($_SESSION['remember_me']);
-			unset($_COOKIE['uid']);
 			// Finally, destroy the session.    
 			session_destroy();
 

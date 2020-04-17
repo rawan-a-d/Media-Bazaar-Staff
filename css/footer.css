@@ -1,95 +1,93 @@
-/* Footer */
+													/* Footer */
 footer {
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: #013c4d;
-color: white;
-height: 6%;
-display: inline-block;
-vertical-align: middle;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #0ed4c3f1;
+	color: white;
+	height: 5%;
+	display: inline-block;
+	vertical-align: middle;
 
 }
 
 /* Footer */
 footer >#creators {
-width: 46%;
-display: inline-block;
-font: Arial, Serif;
-margin-left: 3%;
+	width: 46%;
+	display: inline-block;
+	margin-left: 3%;
 }
 
 #creators > p {
-font-size: 1.2em;
+	font-size: 1.2em;
 }
 
 footer > #copyright {
-display: inline-block;
-font: Arial, Serif;
-width: 100%;
-min-height:100%;
-text-align: right;
-margin-right: 1%;
+	display: inline-block;
+	width: 100%;
+	min-height:100%;
+	text-align: right;
+	margin-right: 1%;
 }
 
 
-			/* Media queries */
+												/* Media queries */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-/*Footer */
-footer {
-padding-bottom: 6%;
-font-size: 0.9em;
-}
+	/*Footer */
+	footer {
+		padding-bottom: 6%;
+		font-size: 0.9em;
+	}
 
-footer >#creators {
-width: 90%;
-display: block;
-}
+	footer >#creators {
+		width: 90%;
+		display: block;
+	}
 
 
-footer > #copyright {
-display: block;
-width: 100%;
-text-align: left;
-margin-left: 3%;
-}	
+	footer > #copyright {
+		display: block;
+		width: 100%;
+		text-align: left;
+		margin-left: 3%;
+	}	
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) and (max-width : 767px) {
-/*Footer */
-footer {
-padding-bottom: 9%;
-}
-footer >#creators {
-width: 90%;
-display: block;
-}
+	/*Footer */
+	footer {
+		padding-bottom: 9%;
+	}
+	footer >#creators {
+		width: 90%;
+		display: block;
+	}
 
-footer > #copyright {
-display: block;
-width: 100%;
-text-align: left;
-margin-left: 3%;
-}	
+	footer > #copyright {
+		display: block;
+		width: 100%;
+		text-align: left;
+		margin-left: 3%;
+	}	
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width : 992px) {
-/*Footer */
-footer {
-padding-bottom: 6%;
-}
-footer >#creators {
-width: 80%;
-display: block;
-}
+	/*Footer */
+	footer {
+		padding-bottom: 6%;
+	}
+	footer >#creators {
+		width: 80%;
+		display: block;
+	}
 
-footer > #copyright {
-width: 100%;
-text-align: left;
-margin-left: 3%;
-}	
+	footer > #copyright {
+		width: 100%;
+		text-align: left;
+		margin-left: 3%;
+	}	
 } 

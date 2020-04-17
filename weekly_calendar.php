@@ -1,15 +1,12 @@
 <?php 
 	include("config/session.php");
-	/* Session expiry */
-	include('config/session_expiry.php');
-
 	include("sql/calendarFunctions.php");
 	$chosenDate = '';
 
 	/* Cancel, call in sick */
 	if(isset($_POST['cancelShift'])){
 		$date = $_POST['date'];
-		$employeeId = $_SESSION['employeeId'];
+		$employeeId = 17;
 
 		cancelShift($date, $employeeId);
 	}
@@ -17,7 +14,7 @@
 	/* Confirm attendance */
 	if(isset($_POST['confirm'])){
 		$date = $_POST['date'];
-		$employeeId = $_SESSION['employeeId'];
+		$employeeId = 17;
 
 		confirmAttendance($date, $employeeId);
 	}
@@ -63,9 +60,6 @@
 		
 		$calendar .= "</div><div class='container'>";
 
-		// Today date
-		$todayDate = new DateTime(date('Y-m-d'));
-
 		do {
 			// Get each day name, small case
 			$dayname = strtolower(date('l', strtotime($dt->format('l'))));
@@ -75,16 +69,13 @@
 			// Check if it's today
 			$today = $daydate==$dateToday?"today":"";
 
-			// Current date as DateTime
-			$currentDate = new DateTime($daydate);
-
 			// If weekend
 			if($dayname == 'saturday' || $dayname =='sunday'){
 				$calendar .= "<div class='box'><h4> ". $dt->format('d M Y')."</h4> <a class='btn holiday'>Holiday</a>";
 			}
 			// if old dates
 			elseif($daydate < date('Y-m-d')){
-				$employeeId = $_SESSION['employeeId'];
+				$employeeId = 17;
 				// Check employee's agenda
 				$result = DoIHaveWork($daydate, $employeeId);
 
@@ -98,25 +89,21 @@
 
 			}
 			else {
-				$employeeId = $_SESSION['employeeId'];
+				$employeeId = 17;
 				// Check employee's agenda
 				$result = DoIHaveWork($daydate, $employeeId);
 
 				// If employee has a shift
 				if($result != null){
-					$interval = $todayDate->diff($currentDate);
-					$interval = $interval->format('%R%a');
-
-					// If result is assigned and it's after 7 days
-					if($result[1] == 'Assigned' && $interval <= 7){
-						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='confirm' class='btn confirm'>Confirm attendance</button><input type='hidden' name='date' value=".$daydate."></form>";
+					// If shift status is assigned
+					if($result[1] == 'Assigned'){
+					// If shift status is assigned
+					$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='confirm' class='btn confirm'>Confirm attendance</button><input type='hidden' name='date' value=".$daydate."></form>";
 					}
-
-					// Register as sick. They can register a day before or same day. 
-					else if($result[1] == 'Confirmed' && $interval <= 1){
+					// If shift status is confirmed
+					else if($result[1] == 'Confirmed'){
 						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$daydate."></form>";		
 					}
-
 					else {
 					// Confirm attendance
 					$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p>";
@@ -159,10 +146,8 @@
 		<title>Weekly Calendar</title>		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/calendar.css">
-
-		<!-- Include header (links to css files and navbar) -->
-		<?php include('includes/header.php') ?>
-
+	</head>
+	<body>
 		<h1><?php echo $chosenDate; ?></h1>
 		<main id="main">
 			<div id="calendar">
@@ -179,11 +164,7 @@
 					generateCalendar($dt, $week, $year);
 				?>
 			</div>		
-		</main>
-
-		<!-- Include footer -->
-		<?php include('includes/footer.php') ?>
-
+		</main>				 
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.js"
 			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
