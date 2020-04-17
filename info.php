@@ -44,10 +44,10 @@
                     <br>
                     <input type='hidden' name='uid' value='".$id."'>
                     <h3 class = 'h3info'>Password</h3>
-
-                    <input type='password' id='typepass' class='form_input' name='pass' value='".$row['password']."'>
-                    <input type='checkbox' onclick='Toggle()' id='cbPass'><label>Show</label>
-
+                    
+                    <a href='updatePass.php' id ='btn_chPass'>Change Password </a>
+                    <br>
+                    
                     <br>
                 </div>
                 <div class='right_side'>

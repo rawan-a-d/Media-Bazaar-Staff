@@ -244,4 +244,41 @@
 		}
 		$conn = null;
 	}
+	function updatePass($connec){
+		$id = $_COOKIE['uid'];
+		$sql ="SELECT * FROM person WHERE id = '$id'";
+        $result = $connec->query($sql);
+        while($row = $result->fetch_assoc()){
+			$pass = $row['password'];
+		}
+
+		if(isset($_POST['infoSubmit'])){
+			
+		$oldPass = $_POST['oldPass'];
+		$newPass = $_POST['newPass'];
+		$conNewPass = $_POST['conNewPass'];
+
+		if($pass == $oldPass){
+
+		
+			if($conNewPass == $newPass){
+				$sql = "UPDATE person
+				SET password = '$newPass'
+				WHERE id = '$id'";
+			
+				$result = $connec->query($sql);
+
+			} else {
+				echo '<script language="javascript">';
+				echo 'alert("New password and confirm pasword are not the same")';
+				echo '</script>';
+			}
+		} else {
+			echo '<script language="javascript">';
+			echo 'alert("Old pasword is not correct")';
+			echo '</script>';
+		}
+		
+		}
+	}
 ?>
