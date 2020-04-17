@@ -313,4 +313,34 @@
 		$result = $statement->fetch();
 	}
 
+
+	// DELETE
+	function cancelProposedShift($date, $employeeId){
+		global $conn;
+
+		try {
+			$employeeId = $employeeId;
+			$chosenDate = $date;
+
+			// Create sql query
+			$sql = "DELETE FROM `schedule` WHERE employeeId = :employeeId && date = :chosenDate";
+
+			$statement = $conn -> prepare($sql);
+
+			// bind parameters to values
+			$statement->bindParam(':employeeId', $employeeId);
+			$statement->bindParam(':chosenDate', $chosenDate);
+
+			$statement->execute();
+
+			$result = $statement->fetch();
+
+			// Close DB connection
+			$conn = null;
+		}
+		catch(PDOEXCEPTION $e) {
+			print_r("Something went wrong: " . $e->getMessage());
+		}		
+	}
+
  ?>

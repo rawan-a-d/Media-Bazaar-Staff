@@ -115,13 +115,15 @@
 				Hello there,
 				
 				Please click on the link to reset your password.
-				<a href='".$link."?email=".$emailTo."'</a>
+				<a href='http://i439426.hera.fhict.nl/changePassword.php'> </a>
+				
 			Reset your password
 			
 			</p>	
 			</div>
 		</body>
 		</html>";
+		// <a href='".$link."?email=".$emailTo."'</a>
 		$sql = "SELECT * FROM person WHERE email=:emailTo AND role= 'Employee'";
 		
 		$stmt = $conn->prepare($sql);
@@ -135,13 +137,13 @@
 		  $mail->isSMTP();
 		  //Set SMTP host name
 		  $mail->Host = "smtp.gmail.com";
-		//   $mail->SMTPOptions = array(
-		// 					'ssl' => array(
-		// 						'verify_peer' => false,
-		// 						'verify_peer_name' => false,
-		// 						'allow_self_signed' => true
-		// 					)
-		// 				);
+		  $mail->SMTPOptions = array(
+							'ssl' => array(
+								'verify_peer' => false,
+								'verify_peer_name' => false,
+								'allow_self_signed' => true
+							)
+						);
 		  //Set this to true if SMTP host requires authentication to send email
 		  $mail->SMTPAuth = TRUE;
 		  //Provide username and password
@@ -163,7 +165,7 @@
 		 
 		  $mail->Subject = "Password Reset";
 		  $mail->Body = $body;
-		//   $mail->AltBody = "This is the plain text version of the email content";
+		$mail->AltBody = "This is the plain text version of the email content";
 		  if($mail->send())
 		  {
 			// echo '<script>
@@ -184,6 +186,26 @@
 		}
 	}
 
+	function updateInfo($connec) {
+		if(isset($_POST['infoSubmit'])){
+			$fName = $_POST['firstName'];
+			$lName = $_POST['lastName'];
+			$email = $_POST['email'];
+			$dob = $_POST['dob'];
+			$streetName = $_POST['streetName'];
+			$houseN = $_POST['houseN'];
+			$city = $_POST['city'];
+			$zipcode = $_POST['zipcode'];
+			$uid = $_POST['uid'];
+			$pass = $_POST['pass'];
+			
+			$sql = "UPDATE person
+			SET firstName = '$fName', lastName = '$lName', email  = '$email',  dateOfBirth = '$dob' ,streetName = '$streetName', houseNr = '$houseN', city = '$city', zipcode = '$zipcode', password = '$pass'
+			WHERE id = '$uid'";
+			
+			$result = $connec->query($sql);
+		}
+	}
 	function PasswordToChange($givenEmail, $givenNewPassword, $givenNewRepeatPassword){
 
 		global $conn;
@@ -222,4 +244,41 @@
 		}
 		$conn = null;
 	}
-	?>
+	function updatePass($connec){
+		$id = $_COOKIE['uid'];
+		$sql ="SELECT * FROM person WHERE id = '$id'";
+        $result = $connec->query($sql);
+        while($row = $result->fetch_assoc()){
+			$pass = $row['password'];
+		}
+
+		if(isset($_POST['infoSubmit'])){
+			
+		$oldPass = $_POST['oldPass'];
+		$newPass = $_POST['newPass'];
+		$conNewPass = $_POST['conNewPass'];
+
+		if($pass == $oldPass){
+
+		
+			if($conNewPass == $newPass){
+				$sql = "UPDATE person
+				SET password = '$newPass'
+				WHERE id = '$id'";
+			
+				$result = $connec->query($sql);
+
+			} else {
+				echo '<script language="javascript">';
+				echo 'alert("New password and confirm pasword are not the same")';
+				echo '</script>';
+			}
+		} else {
+			echo '<script language="javascript">';
+			echo 'alert("Old pasword is not correct")';
+			echo '</script>';
+		}
+		
+		}
+	}
+?>
