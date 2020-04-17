@@ -4,23 +4,24 @@
     /* Session expiry */
     include('config/session_expiry.php');
     include 'sql/server.php';
-    include 'php/connection.inc.php';
-    include 'php/func.inc.php';
+    include 'config/dbConfig.php';
+
 ?>
 
+    <!DOCTYPE html>
+    <html>
 
-<!DOCTYPE html>
-<html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <title>Home page</title>
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <link rel="stylesheet" type="text/css" href="css/navbar.css">
     </head>
+
     <body>
         <?php include('includes/header.php') ?>
-        <div class = "container">
-            <?php 
+            <div class="container">
+                <?php 
                 $id = $_COOKIE['uid'];
                 $sql ="SELECT * FROM person WHERE id = '$id'";
                 $result = $connec->query($sql);
@@ -43,7 +44,10 @@
                     <br>
                     <input type='hidden' name='uid' value='".$id."'>
                     <h3 class = 'h3info'>Password</h3>
-                    <input type='text' class='form_input' name='pass' value='".$row['password']."'>
+
+                    <input type='password' id='typepass' class='form_input' name='pass' value='".$row['password']."'>
+                    <input type='checkbox' onclick='Toggle()' id='cbPass'><label>Show</label>
+
                     <br>
                 </div>
                 <div class='right_side'>
@@ -59,46 +63,29 @@
                     <h3 class = 'h3info'>Zip Code</h3>
                     <input type='text' class='form_input' name='zipcode' value='".$row['zipcode']."'>
                     <br>
-                    
+
                 </div>
-                
+
                 <div id='btnBlock'>
                     <center><button type='submit' name='infoSubmit' id = 'btn_form'>Modify</button></center>
                 </div>
-                
+
             </div>
             </form>
             ";
             }
             sleep(1.5);
             ?>
-            <?php include('includes/footer.php') ?>
-        </div>
-        <br>
-        <div id='myModal' class='modal'>
+                    <?php include('includes/footer.php') ?>
+            </div>
+            <br>
+            <div id='myModal' class='modal'>
+                <div class='modal-content'>
+                    <p id="modal_text">Your information has been updated successfully</p>
+                </div>
+            </div>
+            <script src="js/modal.js"></script>
+            <script src="js/cbPass.js"></script>
 
-
-<div class='modal-content'>
-  <p id="modal_text">Your information has been updated successfully</p>
-</div>
-
-          </div>
-<script>
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("btn_form");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-        
     </body>
-</html>
+    </html>

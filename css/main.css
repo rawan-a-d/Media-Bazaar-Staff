@@ -146,6 +146,9 @@
         box-sizing: border-box;
         width: 300px;
     }
+    #typepass{
+        width: 240px;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -192,6 +195,9 @@
         box-sizing: border-box;
         width: 300px;
     }
+    #typepass{
+        width: 240px;
+    }
 
 }
 
@@ -230,6 +236,9 @@
         box-sizing: border-box;
         width: 250px;
     }
+    #typepass{
+        width: 200px;
+    }
 } 
 
 
@@ -266,6 +275,9 @@
         padding: 6px 10px;
         box-sizing: border-box;
         width: 250px;
+    }
+    #typepass{
+        width: 200px;
     }
 }
 
@@ -307,4 +319,13 @@
         box-sizing: border-box;
         width: 250px;
     }
+    #typepass{
+        width: 200px;
+    }
+}
+#cbPass{
+    
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
 }
