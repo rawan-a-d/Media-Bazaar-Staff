@@ -22,6 +22,12 @@
 					)
 					
 				);
+				// $sql2 ="SELECT * FROM person WHERE email = '$email'";
+    //             $result = $connec->query($sql2);
+    //             while($row = $result->fetch_assoc()){
+				// 	$id = $row['id'];
+				// }
+				
 				$result = $stmt->fetch();
 				$count = $stmt->rowCount();
 				if($count > 0 ){
