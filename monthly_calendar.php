@@ -135,11 +135,11 @@
 				// Check employee's agenda
 				$result = DoIHaveWork($date, $employeeId);
 
+				$interval = $todayDate->diff($currentDate);
+				$interval = $interval->format('%R%a');
+
 				// If employee has a shift
 				if($result != null){
-					$interval = $todayDate->diff($currentDate);
-					$interval = $interval->format('%R%a');
-
 					// If result is assigned and it's after 7 days
 					if($result[1] == 'Assigned' && $interval <= 7){
 						$calendar .= "<div class='box scheduled $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='confirm' class='btn confirm'>Confirm attendance</button><input type='hidden' name='date' value=".$date."></form>";
@@ -169,9 +169,12 @@
 					if($morningShiftWorkers && $afternoonShiftWorkers && $eveningShiftWorkers){
 						$calendar .= "<div class='box $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p> </h4> <a href='#' class='btn full'>Full</a>";
 					}
-					// Employee can propose shift
-					else {
+					// Employee can propose shift 5 days before
+					else if($interval >= 5) {
 						$calendar .= "<div class='box $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4> <a href='proposeShift.php?date=".$date."' class='btn propose'>Propose</a>";
+					}
+					else {
+						$calendar .= "<div class='box $today'><h4> $currentDay <p class='daySmallScreen'>$dayname</p></h4> <a href='proposeShift.php?date=".$date."' class='btn'></a>";
 					}
 				}
 			}
