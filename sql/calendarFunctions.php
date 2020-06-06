@@ -343,4 +343,68 @@
 		}		
 	}
 
+
+	// UPDATE
+	// Accept proposed shift
+	function acceptProposedShift($date, $employeeId){
+		global $conn;
+
+		try {
+			$employeeId = $employeeId;
+			$chosenDate = $date;
+			$status = "Accepted";
+
+			// Create sql query
+			$sql = "UPDATE `schedule` SET `statusOfShift`= :status WHERE employeeId = :employeeId && date = :chosenDate";
+
+			$statement = $conn -> prepare($sql);
+
+			// bind parameters to values
+			$statement->bindParam(':employeeId', $employeeId);
+			$statement->bindParam(':chosenDate', $chosenDate);
+			$statement->bindParam(':status', $status);
+
+			$statement->execute();
+
+			$result = $statement->fetch();
+
+			// Close DB connection
+			$conn = null;
+		}
+		catch(PDOEXCEPTION $e) {
+			print_r("Something went wrong: " . $e->getMessage());
+		}		
+	}
+
+	// UPDATE
+	// Reject proposed shift
+	function rejectProposedShift($date, $employeeId){
+		global $conn;
+
+		try {
+			$employeeId = $employeeId;
+			$chosenDate = $date;
+			$status = "Rejected";
+
+			// Create sql query
+			$sql = "UPDATE `schedule` SET `statusOfShift`= :status WHERE employeeId = :employeeId && date = :chosenDate";
+
+			$statement = $conn -> prepare($sql);
+
+			// bind parameters to values
+			$statement->bindParam(':employeeId', $employeeId);
+			$statement->bindParam(':chosenDate', $chosenDate);
+			$statement->bindParam(':status', $status);
+
+			$statement->execute();
+
+			$result = $statement->fetch();
+
+			// Close DB connection
+			$conn = null;
+		}
+		catch(PDOEXCEPTION $e) {
+			print_r("Something went wrong: " . $e->getMessage());
+		}		
+	}
  ?>
