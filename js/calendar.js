@@ -14,4 +14,30 @@ $(function(){
 	if(cancelledElement){
 		cancelledElement.addClass("cancelled");
 	}
+
+	var cancelledElement = $( ".box:contains('Accepted')" );
+	if(cancelledElement){
+		cancelledElement.addClass("accepted");
+	}
+
+	var cancelledElement = $( ".box:contains('Rejected')" );
+	if(cancelledElement){
+		cancelledElement.addClass("rejected");
+	}
+});
+
+
+$(function(){
+	/* Show/Hide Accept Reject button */
+	var showButtons = $("#showButtons");
+	var acceptButton = $(".accept");
+	var rejectButton = $(".reject");
+
+	showButtons.click(function(){
+		acceptButton.css("display", "inline-block");
+		acceptButton.css("visibility", "visible");
+
+		rejectButton.css("visibility", "visible");
+		rejectButton.css("display", "inline-block");
+	});
 });

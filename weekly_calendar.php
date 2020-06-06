@@ -30,6 +30,22 @@
 		confirmAttendance($date, $employeeId);
 	}
 
+	/* Accept assigned shift */
+	if(isset($_POST['acceptShift'])){
+		$date = $_POST['date'];
+		$employeeId = $_SESSION['employeeId'];
+
+		acceptProposedShift($date, $employeeId);
+	}	
+
+	/* Reject assigned shift */
+	if(isset($_POST['rejectShift'])){
+		$date = $_POST['date'];
+		$employeeId = $_SESSION['employeeId'];
+
+		rejectProposedShift($date, $employeeId);
+	}
+
 
 	function generateCalendar($dt, $week, $year){
 		$dateComponents = getdate();
@@ -115,15 +131,26 @@
 
 				// If employee has a shift
 				if($result != null){
-					// If result is assigned and it's after 7 days
-					if($result[1] == 'Assigned' && $interval <= 7){
+					// Confirm attendance
+					// If result is auto assigned(by the system) or accepted and it's after 7 days
+					if(($result[1] == 'AutoAssigned' || $result[1] == 'Accepted') && $interval <= 7){
 						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='confirm' class='btn confirm'>Confirm attendance</button><input type='hidden' name='date' value=".$daydate."></form>";
 					}
-					// Register as sick. They can register a day before or same day. 
-					else if($result[1] == 'Confirmed' && $interval <= 1){
-						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$daydate."></form>";	
+
+					// If result is assigned
+					else if($result[1] == 'Assigned'){
+						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4> <p>".$result[0]."<br>". $result[1] ."</p>
+							<form action='' method='POST'>
+							<div id='showButtons'>Respond?</div>
+							<button type='submit' name='acceptShift' class='btn accept'>Accept</button>
+							<button type='submit' name='rejectShift' class='btn reject'>Reject</button>
+							<input type='hidden' name='date' value=".$daydate."></form>";
 					}
 
+					// Register as sick. They can register a day before or same day. 
+					else if($result[1] == 'Confirmed' && $interval <= 1){
+						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelShift' class='btn cancel'>Call in sick</button><input type='hidden' name='date' value=".$daydate."></form>";		
+					}
 					// Cancel proposed shift 
 					else if($result[1] == 'Proposed'){
 						$calendar .= "<div class='box scheduled $today'><h4>". $dt->format('d M Y')."</h4><p>".$result[0]."<br>". $result[1] ."</p><form action='' method='POST'><button type='submit' name='cancelProposedShift' class='btn cancel'>Cancel proposal</button><input type='hidden' name='date' value=".$daydate."></form>";	
@@ -144,12 +171,9 @@
 					if($morningShiftWorkers && $afternoonShiftWorkers && $eveningShiftWorkers){
 						$calendar .= "<div class='box $today'><h4>". $dt->format('d M Y')." </h4><a href='#' class='btn full'>Full</a>";
 					}
-					// If shifts aren't full, allow user to propose shift 5 days before
-					else if($interval >= 5) {
-						$calendar .= "<div class='box $today'><h4>". $dt->format('d M Y')."</h4><a href='proposeShift.php?date=".$daydate."' class='btn propose'>Propose</a>";	
-					}
+					// If shifts aren't full, allow user to propose shift
 					else {
-						$calendar .= "<div class='box $today'><h4>". $dt->format('d M Y')."</h4><a href='proposeShift.php?date=".$daydate."' class='btn'></a>";	
+						$calendar .= "<div class='box $today'><h4>". $dt->format('d M Y')."</h4><a href='proposeShift.php?date=".$daydate."' class='btn propose'>Propose</a>";	
 					}
 				}
 			}

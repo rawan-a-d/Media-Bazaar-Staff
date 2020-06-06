@@ -5,6 +5,11 @@ body {
 	background: whitesmoke;
 }
 
+.container {
+	width: 100%;
+	
+}
+
 									/* Table */
 .table {
 	width: 90%;
@@ -95,6 +100,7 @@ a {
 	line-height: 1.5;
 	border-radius: .25rem;
 	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /* Old dates, holiday and full buttons */
@@ -126,6 +132,38 @@ a {
 	width: 90%;
 }
 
+.reject {
+	background: #da7654;
+	color: white;
+	width: 90%;
+}
+
+.accept {
+	background: #297ccc;
+	color: white;
+}
+
+.accept, .reject {
+	visibility: hidden;
+	display: none;
+	width: 46%;
+    margin: 14% 1% 0;
+
+}
+
+#showButtons {
+	cursor:pointer;
+    color:#5d6973;
+    text-decoration:underline;
+    margin-left: 5%;
+}
+
+#showButtons:hover {
+    text-decoration:none;
+/*    text-shadow: 1px 1px 1px #555;
+*/    color: #474d97;
+}
+
 /* Active button (View type) */
 .viewType.active {
 	background-color: #cccccc;
@@ -150,6 +188,16 @@ a {
 	background: crimson;
 }
 
+/* Accepted */
+.scheduled.accepted {
+	background: #20a2af;
+}
+
+/* Rejected */
+.scheduled.rejected {
+	background: #bfce42;
+}
+
 .box {
 	padding: .75rem;
 	border-radius: 6px;
@@ -170,11 +218,11 @@ a {
 @media only screen and (max-width: 600px) {
 							/* Container around boxes */
 	.container {
-		margin-top: 25%;
+		margin: 25% 10%;
 		display: grid; 
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(1, 1fr);
 		grid-auto-rows: minmax(50vw, auto);
-		width: 100%;
+		width: 80%;
 	}
 
 									/* Boxes */
@@ -185,12 +233,12 @@ a {
 		border: 1px solid #dee2e6;
 		font-size: 1.2em;
 		box-shadow: 2px 4px 25px rgba(0,0,0,.15);
-		height: 50vw;
+		height: 60vw;
 	}
 
 	/* Day number AND Shift  */
-	.box > h4, .box > p  {
-		margin-left: 10%;
+	.box > h4, .box > p {
+	    margin-left: 5%;
 	}
 
 	/* Days names */
@@ -210,13 +258,13 @@ a {
 
 								/* Buttons */
 	.old, .holiday, .full, .propose {
-		width: 80%;
-		margin: 46% 10%;
+	    width: 86%;
+	    margin: 38% 7%;
 	}
 
 	.confirm, .cancel {
-		width: 80%;
-		margin: 11% 10%;
+		width: 86%;
+		margin: 10% 7%;
 	}
 
 	.switchWeek, .switchMonth {
@@ -228,6 +276,11 @@ a {
 	.viewType {
 		width: 20%;
 		height: 10vw;
+	}
+
+	.accept, .reject {
+	    width: 39%;
+	    margin: 5% 5%;
 	}
 }
 
@@ -298,6 +351,11 @@ a {
 		border-radius: .25rem;
 		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 	}
+
+	.accept, .reject {
+	    width: 41%;
+	    margin: 4% 4%;
+	}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -360,6 +418,11 @@ a {
 		margin: 6% 5%;
 	}
 
+	.accept, .reject {
+		width: 39%;
+    	margin: 5% 4%;
+	}
+
 }
 
 
@@ -413,6 +476,11 @@ a {
 	.confirm, .cancel {
 		width: 90%;
 		margin: 6% 5% 0;
+	}
+
+	.accept, .reject {
+	    width: 44%;
+	    margin: 6% 2% 0;
 	}
 } 
 
@@ -473,6 +541,11 @@ a {
 
 	.btn {
 		font-size: 1em;
+	}
+
+	.accept, .reject {
+	    width: 43%;
+	    margin: 6% 3% 0;
 	}
 }
 
