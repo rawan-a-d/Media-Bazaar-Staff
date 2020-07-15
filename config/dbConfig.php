@@ -1,10 +1,13 @@
 <?php 
+    // Load configuration as an array. Use the actual location of your configuration file
+    $config = parse_ini_file('config/config.ini');
+
 	// Database configuration 
-	$host= "studmysql01.fhict.local";
-	$port = "81";
-	$username = "dbi435688";
-	$password = "webhosting54";
-	$db = "dbi435688";
+	$host= $config['host'];
+	$port = $config['port'];
+	$username = $config['username'];
+	$password = $config['password'];
+	$db = $config['dbname'];
  
 	try {
 	    $conn = new PDO("mysql:host=$host;dbname=$db", $username, $password);
