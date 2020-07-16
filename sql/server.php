@@ -3,6 +3,9 @@
 	// include("php/connection.inc.php");
 	$errors = array();
 
+	// Load configuration as an array. Use the actual location of your configuration file
+    $config = parse_ini_file('config/config.ini');
+
 	function login($giveEmail, $givenPassword_login){
 		global $conn;
 		
@@ -106,7 +109,7 @@
 		$path .=$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]);        
 		
 		$link = $path."/changePassword.php" ;     
-		echo $link;
+		//echo $link;
 		$body = "<!DOCTYPE html>
 		<html lang='en'>
 		<head>
@@ -150,21 +153,28 @@
 								'allow_self_signed' => true
 							)
 						);
+
+
+		  global $config;
+
+		  $mediaBazaarEmail = $config['mediaBazaarEmail'];
+		  $mediaBazaarPassword = $config['mediaBazaarPassword'];
+
 		  //Set this to true if SMTP host requires authentication to send email
 		  $mail->SMTPAuth = TRUE;
 		  //Provide username and password
-		  $mail->Username = "mediabazaar2@gmail.com";
-		  $mail->Password = "Sendcode43";
+		  $mail->Username = $mediaBazaarEmail;
+		  $mail->Password = $mediaBazaarPassword;
 		  //If SMTP requires TLS encryption then set it
 		  $mail->SMTPSecure = "false";
 		  $mail->Port = 587;
 		  //Set TCP port to connect to
 		  
-		  $mail->From = "mediabazaar2@gmail.com";
+		  $mail->From = $mediaBazaarEmail;
 		  $mail->FromName = "Media Bazaar";
 		  
-		  $mail->addAddress("Anaswarraich72@gmail.com");
-		  //$mail->addAddress("rawan.ad7@gmail.com");
+		  //$mail->addAddress("Anaswarraich72@gmail.com");
+		  $mail->addAddress("rawan.ad7@gmail.com");
 
 		  
 		 $mail->isHTML(true);
@@ -174,11 +184,11 @@
 		$mail->AltBody = "This is the plain text version of the email content";
 		  if($mail->send())
 		  {
-			// echo '<script>
-			// alert("email sent")
-			// </script>';
+			echo '<script>
+			alert("email sent")
+			</script>';
 			
-			header("Location:login.php");
+			//header("Location:login.php");
 		  }
 		 // header("Location:login.php");
 		//   else
